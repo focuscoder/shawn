@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="User">
+	<resultMap id="userResultMap" type="com.talkdata.data.bean.User">
+		<result property="userId" column="user_id"/>
+		<result property="userName" column="user_name"/>
+		<result property="userSex" column="user_sex"/>
+		<result property="duty" column="duty"/>
+		<result property="partment" column="partment"/>
+		<result property="createTime" column="create_time"/>
+		<result property="workStatus" column="work_status"/>
+		<result property="userPname" column="user_pname"/>
+		<result property="userPwd" column="user_pwd"/>
+  	</resultMap>
+  
+  	<sql id="userWhereCondition">
+		<where>
+	  	<if test=" user_id != null and user_id != '' and user_id != 'null' ">
+			<![CDATA[ AND A.user_id = #{user_id} ]]>
+	  	</if>
+	  	<if test=" user_name != null and user_name != '' and user_name != 'null' ">
+			<![CDATA[ AND A.user_name = #{user_name} ]]>
+	  	</if>
+	  	<if test=" user_sex != null and user_sex != '' and user_sex != 'null' ">
+			<![CDATA[ AND A.user_sex = #{user_sex} ]]>
+	  	</if>
+	  	<if test=" duty != null and duty != '' and duty != 'null' ">
+			<![CDATA[ AND A.duty = #{duty} ]]>
+	  	</if>
+	  	<if test=" partment != null and partment != '' and partment != 'null' ">
+			<![CDATA[ AND A.partment = #{partment} ]]>
+	  	</if>
+	  	<if test=" create_time != null and create_time != '' and create_time  != 'null' ">
+	    	<![CDATA[ AND A.create_time = DATE_FORMAT(#{create_time},'%Y-%m-%d %H:%i:%s') ]]>
+	  	</if>
+	  	<if test=" work_status != null and work_status != '' and work_status != 'null' ">
+			<![CDATA[ AND A.work_status = #{work_status} ]]>
+	  	</if>
+	  	<if test=" user_pname != null and user_pname != '' and user_pname != 'null' ">
+			<![CDATA[ AND A.user_pname = #{user_pname} ]]>
+	  	</if>
+	  	<if test=" user_pwd != null and user_pwd != '' and user_pwd != 'null' ">
+			<![CDATA[ AND A.user_pwd = #{user_pwd} ]]>
+	  	</if>
+		</where>
+  	</sql>
+
+  	<insert id="addUser"  parameterType="java.util.Map">
+		<![CDATA[
+	  	INSERT INTO USER_T
+		]]>
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+	  		<if test=" user_id  != null and  user_id  != ''  and  user_id  != 'null' ">
+				<![CDATA[ user_id , ]]>
+	  		</if>
+	  		<if test=" user_name  != null and  user_name  != ''  and  user_name  != 'null' ">
+				<![CDATA[ user_name , ]]>
+	  		</if>
+	  		<if test=" user_sex  != null and  user_sex  != ''  and  user_sex  != 'null' ">
+				<![CDATA[ user_sex , ]]>
+	  		</if>
+	  		<if test=" duty  != null and  duty  != ''  and  duty  != 'null' ">
+				<![CDATA[ duty , ]]>
+	  		</if>
+	  		<if test=" partment  != null and  partment  != ''  and  partment  != 'null' ">
+				<![CDATA[ partment , ]]>
+	  		</if>
+	  		<if test=" create_time  != null and  create_time  != ''  and  create_time  != 'null' ">
+				<![CDATA[ create_time , ]]>
+	  		</if>
+	  		<if test=" work_status  != null and  work_status  != ''  and  work_status  != 'null' ">
+				<![CDATA[ work_status , ]]>
+	  		</if>
+	  		<if test=" user_pname  != null and  user_pname  != ''  and  user_pname  != 'null' ">
+				<![CDATA[ user_pname , ]]>
+	  		</if>
+	  		<if test=" user_pwd  != null and  user_pwd  != ''  and  user_pwd  != 'null' ">
+				<![CDATA[ user_pwd , ]]>
+	  		</if>
+		</trim>
+		VALUES
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+	  		<if test=" user_id  != null and  user_id  != ''  and  user_id  != 'null' ">
+	  			<![CDATA[ #{user_id} , ]]>
+	  		</if>
+	  		<if test=" user_name  != null and  user_name  != ''  and  user_name  != 'null' ">
+	  			<![CDATA[ #{user_name} , ]]>
+	  		</if>
+	  		<if test=" user_sex  != null and  user_sex  != ''  and  user_sex  != 'null' ">
+	  			<![CDATA[ #{user_sex} , ]]>
+	  		</if>
+	  		<if test=" duty  != null and  duty  != ''  and  duty  != 'null' ">
+	  			<![CDATA[ #{duty} , ]]>
+	  		</if>
+	  		<if test=" partment  != null and  partment  != ''  and  partment  != 'null' ">
+	  			<![CDATA[ #{partment} , ]]>
+	  		</if>
+	  		<if test=" create_time != null and create_time != '' and create_time  != 'null' ">
+	    		<![CDATA[ DATE_FORMAT(#{create_time},'%Y-%m-%d %H:%i:%s'), ]]>
+	  		</if>
+	  		<if test=" work_status  != null and  work_status  != ''  and  work_status  != 'null' ">
+	  			<![CDATA[ #{work_status} , ]]>
+	  		</if>
+	  		<if test=" user_pname  != null and  user_pname  != ''  and  user_pname  != 'null' ">
+	  			<![CDATA[ #{user_pname} , ]]>
+	  		</if>
+	  		<if test=" user_pwd  != null and  user_pwd  != ''  and  user_pwd  != 'null' ">
+	  			<![CDATA[ #{user_pwd} , ]]>
+	  		</if>
+		</trim>
+  	</insert>
+ 
+  	<update id="updateUser" parameterType="java.util.Map">
+		<![CDATA[ UPDATE USER_T A ]]>
+		<set>
+	  	<if test=" user_name  != null and  user_name  != ''  and  user_name  != 'null' ">
+	  		<![CDATA[ A.user_name = #{user_name}, ]]>
+	  	</if>
+	  	<if test=" user_sex  != null and  user_sex  != ''  and  user_sex  != 'null' ">
+	  		<![CDATA[ A.user_sex = #{user_sex}, ]]>
+	  	</if>
+	  	<if test=" duty  != null and  duty  != ''  and  duty  != 'null' ">
+	  		<![CDATA[ A.duty = #{duty}, ]]>
+	  	</if>
+	  	<if test=" partment  != null and  partment  != ''  and  partment  != 'null' ">
+	  		<![CDATA[ A.partment = #{partment}, ]]>
+	  	</if>
+	  	<if test=" create_time != null and create_time != '' and create_time  != 'null' ">
+	    	<![CDATA[ A.create_time = DATE_FORMAT(#{create_time},'%Y-%m-%d %H:%i:%s'), ]]>
+	  	</if>
+	  	<if test=" work_status  != null and  work_status  != ''  and  work_status  != 'null' ">
+	  		<![CDATA[ A.work_status = #{work_status}, ]]>
+	  	</if>
+	  	<if test=" user_pname  != null and  user_pname  != ''  and  user_pname  != 'null' ">
+	  		<![CDATA[ A.user_pname = #{user_pname}, ]]>
+	  	</if>
+	  	<if test=" user_pwd  != null and  user_pwd  != ''  and  user_pwd  != 'null' ">
+	  		<![CDATA[ A.user_pwd = #{user_pwd}, ]]>
+	  	</if>
+		</set>
+		<![CDATA[ where A.USER_ID = #{user_id}]]>
+  	</update>
+  
+  	<delete id="deleteUser" parameterType="java.util.Map">
+		<![CDATA[ DELETE FROM USER_T  where USER_ID = #{user_id} ]]>
+	</delete>
+  
+	<select id="findOneUser" parameterType="java.util.Map" resultMap="userResultMap">
+		<![CDATA[ SELECT A.* FROM USER_T A  ]]>
+		<include refid="userWhereCondition" />
+  	</select>
+    
+  	<select id="findAllUser" parameterType="java.util.Map" resultMap="userResultMap" >
+		<![CDATA[ SELECT A.* FROM USER_T A ]]>
+		
+  	</select>
+  	
+  	<select id="findAllMapUser" parameterType="java.util.Map" resultType="java.util.HashMap" >
+		<![CDATA[ SELECT A.* FROM USER_T A ]]>
+		<include refid="userWhereCondition" />
+	</select>
+  
+  	<select id="findUserTotal" parameterType="java.util.Map" resultType="java.lang.Integer">
+		<![CDATA[ SELECT  COUNT(1) FROM USER_T A ]]>
+		<include refid="userWhereCondition" />
+  	</select>
+  
+  	<select id="queryUserForPage" parameterType="java.util.Map" resultType="java.util.HashMap">
+		<![CDATA[ SELECT A.* FROM USER_T A ]]>
+		<include refid="userWhereCondition" />
+  	</select>
+  	
+  	<select id="testdao" parameterType="java.util.Map" resultType="java.util.HashMap">
+		<![CDATA[ SELECT A.* FROM USER_T A ]]>
+  	</select>
+</mapper>

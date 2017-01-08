@@ -1,0 +1,172 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>cn.com.dubbo</groupId>
+  <artifactId>provider</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+	<properties>
+		<jdk.version>1.7</jdk.version>
+		<encoding>UTF-8</encoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>  
+  
+    <dependencies>  
+        <!-- <dependency>
+      		<groupId>junit</groupId>
+      		<artifactId>junit</artifactId>
+      		<version>3.8.1</version>
+      		<scope>test</scope>  
+    	</dependency> --> 
+		<dependency>
+  			<groupId>cn.com.dubbo</groupId>
+  			<artifactId>dubboservice</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<!-- <dependency>
+   		 	<groupId>org.springframework</groupId>	
+    		<artifactId>spring-web</artifactId>
+    		<version>4.2.5.RELEASE</version>
+		</dependency> -->
+		<!-- <dependency>
+  			<groupId>org.springframework</groupId>
+  			<artifactId>spring-core</artifactId>
+  			<version>4.2.5.RELEASE</version>
+		</dependency> -->
+		<dependency>
+  			<groupId>org.springframework</groupId>
+  			<artifactId>spring-context</artifactId>
+  			<version>4.2.5.RELEASE</version>
+		</dependency>
+		<!-- <dependency>
+  			<groupId>org.springframework</groupId>
+  			<artifactId>spring-webmvc</artifactId>
+  			<version>4.2.6.RELEASE</version>
+		</dependency> -->
+		<!-- <dependency>
+  			<groupId>org.springframework</groupId>
+  			<artifactId>spring-tx</artifactId>
+  			<version>4.1.9.RELEASE</version>
+		</dependency>
+		<dependency>
+  			<groupId>org.springframework</groupId>
+  			<artifactId>spring-jdbc</artifactId>
+  			<version>4.2.6.RELEASE</version>
+		</dependency>  -->
+    	<dependency>
+  			<groupId>cn.com.dubbo</groupId>
+  			<artifactId>udubbo</artifactId>
+  			<version>2.5.3</version>
+		</dependency>
+		<!-- <dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-beans</artifactId>
+    		<version>3.0.5.RELEASE</version>
+		</dependency> -->
+		<!-- <dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-aop</artifactId>
+    		<version>4.3.5.RELEASE</version>
+		</dependency> -->
+		<!-- <dependency>
+    		<groupId>javax.servlet</groupId>
+    		<artifactId>javax.servlet-api</artifactId>
+    		<version>3.1.0</version>
+		</dependency> -->
+		<!-- <dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-webmvc-portlet</artifactId>
+    		<version>4.3.0.RELEASE</version>
+		</dependency> -->
+		<!-- <dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-asm</artifactId>
+    		<version>3.1.0.RELEASE</version>
+		</dependency> -->
+		<!-- <dependency>
+    		<groupId>commons-io</groupId>
+    		<artifactId>commons-io</artifactId>
+    		<version>2.4</version>
+		</dependency> -->
+		<dependency>
+    		<groupId>com.101tec</groupId>
+    		<artifactId>zkclient</artifactId>
+    		<version>0.3</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.apache.zookeeper</groupId>
+    		<artifactId>zookeeper</artifactId>
+    		<version>3.4.6</version>  
+		</dependency>
+ 		<dependency>
+    		<groupId>org.javassist</groupId>
+    		<artifactId>javassist</artifactId>
+    		<version>3.20.0-GA</version>
+		</dependency>
+		<!-- <dependency>
+  			<groupId>com.it.mysites</groupId>
+  			<artifactId>testmaven</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+		</dependency> -->
+		<!-- <dependency>
+    		<groupId>com.caucho</groupId>
+   		 	<artifactId>hessian</artifactId>
+    		<version>4.0.7</version>
+		</dependency> -->
+    </dependencies>   
+  
+    <build>  
+        <plugins>  
+            <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+					<encoding>${encoding}</encoding>
+				</configuration>
+			</plugin>  
+  
+            <plugin>  
+                <groupId>org.apache.maven.plugins</groupId>  
+                <artifactId>maven-source-plugin</artifactId>  
+                <version>2.4</version>  
+                <executions>  
+                    <execution>  
+                        <id>attach-sources</id>  
+                        <phase>verify</phase>  
+                        <goals>  
+                            <goal>jar-no-fork</goal>  
+                        </goals>  
+                    </execution>  
+                </executions>  
+            </plugin>  
+  		</plugins>
+  		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>*.xml</include>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+		</resources>  
+    </build>
+      
+    <distributionManagement>
+		<repository>
+			<id>release</id>
+			<url>http://192.168.0.142:8081/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshot</id> 
+			<url>http://192.168.0.142:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+</project>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	
+  <display-name></display-name>
+  <context-param>
+  	<param-name>contextConfigLocation</param-name>
+  	<param-value>classpath:app_config/context/spring-*.xml</param-value>
+  </context-param>
+  
+  <!--
+	<filter>
+		<filter-name>sessionValidate</filter-name>
+		<filter-class>
+			com.framework.authority.web.filter.LoginValidatorFilter
+		</filter-class>
+		<init-param>
+			<param-name>staticPath</param-name>
+			<param-value>/static/</param-value>
+		</init-param>
+		<init-param>
+			<param-name>excludedPages</param-name>
+			<param-value>/index,/login,/loginAction</param-value>
+		</init-param>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>false</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>sessionValidate</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	-->
+  
+  <filter>
+    <description>字符集过滤器</description>    
+    <filter-name>encodingFilter</filter-name>     
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <description>字符集编码</description>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  
+  <filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/</url-pattern>
+  </filter-mapping>
+  
+  
+  
+  <listener>
+    <description>spring监听器</description>    
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <listener>   
+    <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+  </listener>
+  <listener>  
+        <listener-class>cn.com.dubbo.filter.ContextListener</listener-class>  
+  </listener>  
+    
+  <servlet>
+    <description>spring mvc servlet</description>
+    <servlet-name>springMVC</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	<init-param>
+      <description>spring mvc 配置文件</description>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:app_config/context/spring-mvc.xml</param-value>
+    </init-param>
+     
+    <load-on-startup>1</load-on-startup>  
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>springMVC</servlet-name>
+    <url-pattern>*.do</url-pattern> 
+  </servlet-mapping> 
+  
+   <filter>
+   <filter-name>author</filter-name>
+   <filter-class>cn.com.dubbo.filter.LoginFilter</filter-class>
+   </filter>
+   <filter-mapping>
+   <filter-name>author</filter-name>
+   <url-pattern>/*</url-pattern>   
+   
+   </filter-mapping>
+   
+  <session-config>
+    <session-timeout>15</session-timeout>
+  </session-config>     
+
+  <welcome-file-list>
+    <welcome-file>/login.jsp</welcome-file> 
+  </welcome-file-list>
+</web-app>

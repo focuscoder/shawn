@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <!-- <groupId>cn.com.dubbo</groupId> -->
+  <artifactId>my-web</artifactId>
+  <packaging>war</packaging>
+  <!-- <version>0.0.1-SNAPSHOT</version>  -->
+  <name>my-web</name>
+  <!-- <url>http://maven.apache.org</url> -->
+  
+  <parent>      
+		<groupId>cn.com.dubbo</groupId>
+  		<artifactId>mydubbo</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  </parent>
+  
+  <properties>
+  		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- 本地模式 -->
+		<!-- <server.local.uri>http://localhost:8080/manager/text</server.local.uri>
+		<server.local.username>myway</server.local.username>
+		<server.local.password>myway</server.local.password> -->
+		<!-- 远程模式 -->
+		<!-- <server.remote.uri>http://10.66.202.122:8383/manager/text</server.remote.uri>
+		<server.remote.username>myuser</server.remote.username>
+		<server.remote.password>sda_user</server.remote.password> -->
+	</properties> 
+     
+	<dependencies>				
+ 		<!-- <dependency>
+  			<groupId>com.it.mysites</groupId>
+  			<artifactId>common</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+		</dependency> -->
+		<dependency>
+    		<groupId>com.caucho</groupId>
+   		 	<artifactId>hessian</artifactId>
+    		<version>4.0.7</version>
+		</dependency>
+				<dependency>
+  			<groupId>cn.com.dubbo</groupId> 
+  			<artifactId>dubboservice</artifactId>
+  			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+    </dependencies>
+
+</project>

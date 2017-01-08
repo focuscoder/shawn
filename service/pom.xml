@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>cn.com.dubbo</groupId>
+  <artifactId>dubboservice</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  
+ <!--  <parent>      
+		<groupId>cn.com.dubbo</groupId>
+  		<artifactId>mydubbo</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  </parent> -->
+
+    <dependencies>  
+       
+    </dependencies>  
+ 
+      
+     <distributionManagement>
+		<repository>
+			<id>release</id>
+			<url>http://192.168.1.103:8081/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshot</id> 
+			<url>http://192.168.1.103:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+</project> 
